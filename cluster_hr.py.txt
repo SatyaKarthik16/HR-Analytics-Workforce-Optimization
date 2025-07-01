@@ -1,0 +1,29 @@
+📄 cluster_hr.py – Segment Employees Using Clustering
+
+
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+def cluster_employees(df):
+    features = df[['EngagementScore', 'TrainingHours', 'Tenure']]
+    scaler = StandardScaler()
+    scaled = scaler.fit_transform(features)
+
+    kmeans = KMeans(n_clusters=3, random_state=42)
+    df['Cluster'] = kmeans.fit_predict(scaled)
+
+    return df
+
+if __name__ == "__main__":
+    df = pd.read_csv("data/synthetic_hr_data.csv")
+    clustered_df = cluster_employees(df)
+
+    # Visualize clusters
+    sns.scatterplot(data=clustered_df, x='TrainingHours', y='EngagementScore', hue='Cluster', palette='Set2')
+    plt.title("Employee Segmentation by Clustering")
+    plt.tight_layout()
+    plt.savefig("images/employee_clusters.png")
+    print("Cluster plot saved to images/employee_clusters.png")
