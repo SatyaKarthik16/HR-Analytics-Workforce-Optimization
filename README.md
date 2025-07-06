@@ -78,7 +78,6 @@ hr-analytics-dashboard/
 
 
 
-
 ## 📬 Contact
 - ✉ Email: [satyakarthik.y@gmail.com](mailto:satyakarthik.y@gmail.com)
-- 💼 LinkedIn: [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
+
